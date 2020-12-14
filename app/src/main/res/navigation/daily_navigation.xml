@@ -18,7 +18,8 @@
         android:label="BreakfastListFragment" >
         <action
             android:id="@+id/action_breakfastListFragment_to_recipeFragment"
-            app:destination="@id/recipeFragment" />
+            app:destination="@id/recipeFragment"
+            app:enterAnim="@anim/item_animation_fall_down" />
     </fragment>
     <fragment
         android:id="@+id/recipeFragment"

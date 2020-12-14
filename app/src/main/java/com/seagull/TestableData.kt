@@ -9,9 +9,17 @@ public val listBreakfast = listOf(
         "Oatmeal with bananas"
     ),
     Recipe(
-        "http://t0.gstatic.com/images?q=tbn:ANd9GcSqNBAurMshm6AGJRj9Gz0ZLybnphYB_VatKR7_St-dEpsPMRABkf4ZpNRVxg6oz8KxWMn485Zku1dsH82vp8I",
-        "Oatmeal with blackberry"
+        "https://i2.wp.com/www.vegrecipesofindia.com/wp-content/uploads/2017/09/thayir-vadai-curd-vada-recipe.jpg",
+        "Yogurt"
     ),
+    Recipe(
+        "https://www.countrycleaver.com/wp-content/uploads/2016/03/IMG_8313.jpg",
+        "Lemon Poppyseed Crepes"
+    ),
+//    Recipe(
+//        "http://t0.gstatic.com/images?q=tbn:ANd9GcSqNBAurMshm6AGJRj9Gz0ZLybnphYB_VatKR7_St-dEpsPMRABkf4ZpNRVxg6oz8KxWMn485Zku1dsH82vp8I",
+//        "Oatmeal with blackberry"
+//    ),
     Recipe(
         "https://diethood.com/wp-content/uploads/2019/12/How-To-Make-Oatmeal-4.jpg",
         "New Year Oatmeal"

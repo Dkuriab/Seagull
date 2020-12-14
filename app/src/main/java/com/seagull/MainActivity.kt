@@ -9,6 +9,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
     private var currentNavController: LiveData<NavController>? = null
 
+    companion object {
+        //TODO move to Application
+        lateinit var bottomNavigationView: BottomNavigationView
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_AppCompat)
 
@@ -26,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigation() {
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
 
         val navGraphIds = listOf(
             R.navigation.daily_navigation,

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.seagull.MainActivity
 import com.seagull.R
 import com.seagull.navigate
 import kotlinx.android.synthetic.main.daily_fragment.*
@@ -21,8 +22,10 @@ class DailyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        slideUp(MainActivity.bottomNavigationView)
         breakfast_card.setOnClickListener {
             navigate(DailyFragmentDirections.actionDailyFragmentToBreakfastListFragment())
         }
     }
+
 }
