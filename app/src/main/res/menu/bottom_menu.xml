@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+		android:id="@+id/daily_navigation"
+		android:title="@string/daily"
+		android:icon="@drawable/ic_baseline_set_meal_24"/>
+	<item
+		android:id="@+id/you_navigation"
+		android:title="@string/you"
+		android:icon="@drawable/ic_baseline_you_24"/>
+	<item
+		android:id="@+id/settings_navigation"
+		android:title="@string/settings"
+		android:icon="@drawable/ic_baseline_settings_24"/>
+</menu>

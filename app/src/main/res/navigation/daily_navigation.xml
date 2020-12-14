@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/daily_navigation"
+    app:startDestination="@id/dailyFragment">
+
+    <fragment
+        android:id="@+id/dailyFragment"
+        android:name="com.seagull.fragments.DailyFragment"
+        android:label="DailyFragment" >
+        <action
+            android:id="@+id/action_dailyFragment_to_breakfastListFragment"
+            app:destination="@id/breakfastListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/breakfastListFragment"
+        android:name="com.seagull.fragments.BreakfastListFragment"
+        android:label="BreakfastListFragment" >
+        <action
+            android:id="@+id/action_breakfastListFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="com.seagull.fragments.RecipeFragment"
+        android:label="RecipeFragment" >
+        <argument
+            android:name="recipe_description"
+            app:argType="string" />
+        <argument
+            android:name="recipe_photo_link"
+            app:argType="string" />
+    </fragment>
+</navigation>
