@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/youFragment"
-        android:name="com.seagull.fragments.YouFragment"
+        android:name="com.seagull.ui.you.YouFragment"
         android:label="YouFragment" />
 </navigation>

@@ -10,16 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10sp"
-        android:elevation="3dp"
+        android:elevation="1dp"
+        android:transitionName="@string/breakfast_transition_name"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@id/lunch_card"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/breakfast_google"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/google_breakfast"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,16 +39,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10sp"
-        android:elevation="3dp"
+        android:elevation="1dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@id/dinner_card"
         app:layout_constraintTop_toBottomOf="@id/breakfast_card">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/lunch_google"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/google_lunch"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,16 +67,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10sp"
-        android:elevation="3dp"
+        android:elevation="1dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lunch_card">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/dinner_google"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/google_dinner"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10" />
 
         <TextView
             android:layout_width="wrap_content"

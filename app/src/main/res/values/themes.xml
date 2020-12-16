@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AppCompat" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">#9E020202</item>
@@ -11,11 +11,25 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <item name="android:windowContentTransitions">true</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowSharedElementEnterTransition">
+            @transition/change_image_transform
+        </item>
+        <item name="android:windowSharedElementExitTransition">
+            @transition/change_image_transform
+        </item>
     </style>
 
-    <style name="Theme.AppCompat.SplashTheme">
+    <style name="AppTheme.SplashTheme">
         <item name="android:windowBackground">@drawable/logo</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSizeTop10" parent="">
+        <item name="cornerSizeTopLeft">10sp</item>
+        <item name="cornerSizeTopRight">10sp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize10" parent="">
+        <item name="cornerSize">10sp</item>
     </style>
 </resources>

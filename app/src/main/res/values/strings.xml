@@ -9,4 +9,8 @@
     <string name="todo">TODO</string>
     <string name="name">Name</string>
     <string name="todo_design">We should create design for this … now looks weird : (</string>
+    <string name="recipe_transition_name">recipe_transition</string>
+    <string name="recipe_photo_transition_name">recipe_photo_transition</string>
+    <string name="breakfast_transition_name">breakfast_tr</string>
+    <string name="recipe_name_transition_name">recipe_name_transition_name</string>
 </resources>
