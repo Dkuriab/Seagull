@@ -11,12 +11,12 @@ import kotlinx.android.synthetic.main.recipe_preview.view.*
 
 class RecipeListAdapter(
     private val recipes: List<Recipe>,
-    private val onClick: (View, Recipe) -> Unit
+    private val onClick: (Int, View, Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder>() {
 
     class RecipeViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
         fun bind(recipe: Recipe) {
-            with (root) {
+            with(root) {
                 transitionName = "${this.transitionName}${recipe.id}"
                 photo.transitionName = "${this.photo.transitionName}${recipe.id}"
                 name.transitionName = "${this.name.transitionName}${recipe.id}"
@@ -36,7 +36,7 @@ class RecipeListAdapter(
                 .inflate(R.layout.recipe_preview, parent, false)
         )
         holder.root.setOnClickListener {
-            onClick(it, recipes[holder.adapterPosition])
+            onClick(holder.adapterPosition, it, recipes[holder.adapterPosition])
         }
         return holder
     }

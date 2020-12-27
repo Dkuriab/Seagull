@@ -2,6 +2,8 @@ package com.seagull.misc
 
 import android.view.View
 import android.view.animation.TranslateAnimation
+import androidx.core.view.forEach
+import com.seagull.ui.MainActivity
 
 fun slideUp(view: View) {
     val animate =
@@ -14,7 +16,7 @@ fun slideUp(view: View) {
     animate.duration = 300
     animate.fillAfter = true
     view.startAnimation(animate)
-    view.isActivated = true
+    view.isEnabled = true
 }
 
 fun slideDown(view: View) {
@@ -27,5 +29,12 @@ fun slideDown(view: View) {
     animate.duration = 300
     animate.fillAfter = true
     view.startAnimation(animate)
-    view.isActivated = false
+    view.isEnabled = false
+}
+
+fun unHideBottomBar() {
+    if (!MainActivity.bottomNavigationView.isEnabled) {
+        slideUp(MainActivity.bottomNavigationView)
+        MainActivity.bottomNavigationView.menu.forEach { it.isEnabled = true }
+    }
 }

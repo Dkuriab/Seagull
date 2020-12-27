@@ -11,6 +11,12 @@
         <action
             android:id="@+id/action_dailyFragment_to_breakfastListFragment"
             app:destination="@id/breakfastListFragment" />
+        <action
+            android:id="@+id/action_dailyFragment_to_lunchListFragment"
+            app:destination="@id/lunchListFragment" />
+        <action
+            android:id="@+id/action_dailyFragment_to_dinnerListFragment"
+            app:destination="@id/dinnerListFragment" />
     </fragment>
     <fragment
         android:id="@+id/breakfastListFragment"
@@ -30,5 +36,21 @@
         <argument
             android:name="recipe_photo_link"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/lunchListFragment"
+        android:name="com.seagull.ui.daily.LunchListFragment"
+        android:label="LunchListFragment" >
+        <action
+            android:id="@+id/action_lunchListFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dinnerListFragment"
+        android:name="com.seagull.ui.daily.DinnerListFragment"
+        android:label="DinnerListFragment" >
+        <action
+            android:id="@+id/action_dinnerListFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
     </fragment>
 </navigation>

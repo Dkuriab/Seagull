@@ -13,6 +13,7 @@ import com.seagull.R
 import com.seagull.misc.navigate
 import com.seagull.ui.MainActivity
 import com.seagull.misc.slideUp
+import com.seagull.misc.unHideBottomBar
 import kotlinx.android.synthetic.main.daily_fragment.*
 
 class DailyFragment : Fragment() {
@@ -29,24 +30,24 @@ class DailyFragment : Fragment() {
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
 
-        if (!MainActivity.bottomNavigationView.isActivated) {
-            slideUp(MainActivity.bottomNavigationView)
-        }
+        unHideBottomBar()
+
         breakfast_card.setOnClickListener {
             navigate(DailyFragmentDirections.actionDailyFragmentToBreakfastListFragment())
+        }
+
+        lunch_card.setOnClickListener {
+            navigate(DailyFragmentDirections.actionDailyFragmentToLunchListFragment())
+        }
+
+        dinner_card.setOnClickListener {
+            navigate(DailyFragmentDirections.actionDailyFragmentToDinnerListFragment())
         }
 
         setTransition()
     }
 
     private fun setTransition() {
-//        exitTransition = MaterialFadeThrough().apply {
-//            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-//        }
-//
-//        enterTransition = MaterialFadeThrough().apply {
-//            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-//        }
         exitTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z,
             /* forward= */ true
