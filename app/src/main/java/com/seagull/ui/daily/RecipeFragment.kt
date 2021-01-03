@@ -23,6 +23,7 @@ import com.seagull.misc.unHideBottomBar
 import com.seagull.ui.MainActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.list_fragment.*
 import kotlinx.android.synthetic.main.recipe_fragment.*
 import kotlinx.android.synthetic.main.recipe_preview.*
 
@@ -38,7 +39,6 @@ class RecipeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         unHideBottomBar()
-
 
         Picasso.get()
             .load(RecipeFragmentArgs.fromBundle(requireArguments()).recipePhotoLink)

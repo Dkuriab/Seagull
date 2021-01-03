@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         val navGraphIds = listOf(
             R.navigation.daily_navigation,
-            R.navigation.you_navigation,
+            R.navigation.buying_list_navigation,
             R.navigation.settings_navigation
         )
         val controller = bottomNavigationView.setupWithNavController(

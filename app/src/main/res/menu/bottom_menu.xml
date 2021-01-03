@@ -5,7 +5,7 @@
 		android:title="@string/daily"
 		android:icon="@drawable/ic_baseline_set_meal_24"/>
 	<item
-		android:id="@+id/you_navigation"
+		android:id="@+id/buying_list_navigation"
 		android:title="@string/you"
 		android:icon="@drawable/ic_baseline_you_24"/>
 	<item

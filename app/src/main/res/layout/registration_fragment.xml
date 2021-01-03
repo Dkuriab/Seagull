@@ -9,15 +9,16 @@
         android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintVertical_chainStyle="spread"
         android:background="@drawable/fields_background"
         android:hint="@string/email"
+        android:maxLines="1"
         android:padding="10sp"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/password"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent="0.8" />
 
     <EditText
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/fields_background"
         android:hint="@string/password"
+        android:maxLines="1"
         android:padding="10sp"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/password_repeat"
@@ -38,9 +40,9 @@
         android:id="@+id/password_repeat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:background="@drawable/fields_background"
         android:hint="@string/repeat_password"
+        android:maxLines="1"
         android:padding="10sp"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/weight"
@@ -53,9 +55,9 @@
         android:id="@+id/weight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:background="@drawable/fields_background"
         android:hint="@string/weight"
+        android:maxLines="1"
         android:padding="10sp"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/height"
@@ -68,9 +70,9 @@
         android:id="@+id/height"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:background="@drawable/fields_background"
         android:hint="@string/height"
+        android:maxLines="1"
         android:padding="10sp"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/sex"
@@ -98,16 +100,16 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:text="@string/male" />
+            android:text="@string/male"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/button2"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
-            android:textSize="12sp"
             android:layout_height="wrap_content"
-            android:text="@string/female" />
+            android:text="@string/female"
+            android:textSize="12sp" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <Button
@@ -116,6 +118,7 @@
         android:layout_height="wrap_content"
         android:text="@string/register"
         android:textSize="14sp"
+        android:background="@drawable/bottom_navigation_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
