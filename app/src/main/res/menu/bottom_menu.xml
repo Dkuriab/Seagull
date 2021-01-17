@@ -2,11 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item
         android:title="@string/daily"
+		android:id="@+id/daily_navigation"
 		android:icon="@drawable/ic_baseline_set_meal_24"/>
 	<item
         android:title="@string/you"
+		android:id="@+id/buying_list_navigation"
 		android:icon="@drawable/ic_baseline_you_24"/>
 	<item
         android:title="@string/settings"
+		android:id="@+id/settings_navigation"
 		android:icon="@drawable/ic_baseline_settings_24"/>
 </menu>
