@@ -2,27 +2,29 @@ package com.seagull.ui.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.seagull.R
-import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
-
         setContentView(R.layout.activity_login)
 
-        tab_layout.addTab(tab_layout.newTab().setText(getString(R.string.login)))
-        tab_layout.addTab(tab_layout.newTab().setText(getString(R.string.register)))
-        tab_layout.tabGravity = TabLayout.GRAVITY_FILL
+        val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
+        val viewPager = findViewById<ViewPager>(R.id.view_pager)
 
-        view_pager.adapter = LoginAdapter(supportFragmentManager, this, tab_layout.tabCount)
-        view_pager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_layout))
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.login)))
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.register)))
+        tabLayout.tabGravity = TabLayout.GRAVITY_FILL
 
-        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        viewPager.adapter = LoginAdapter(supportFragmentManager, this, tabLayout.tabCount)
+        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                view_pager.currentItem = tab!!.position
+                viewPager.currentItem = tab!!.position
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {

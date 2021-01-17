@@ -5,22 +5,36 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.Animation
+import android.view.animation.TranslateAnimation
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
 import com.seagull.R
 import com.seagull.data.model.DateIdentificator
 import com.seagull.misc.navigate
 import com.seagull.misc.unHideBottomBar
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.daily_fragment.*
 import java.util.*
 
-//DateIdentificator in format  "MM_DD"
 class DailyFragment : Fragment() {
+    private val model: DailyViewModel by activityViewModels()
+    private var previousPosition = 0 //TODO remove to hell
+
+    private lateinit var tabLayoutDaily: TabLayout
+    private lateinit var breakfastCardTitle: TextView
+    private lateinit var breakfastCard: ShapeableImageView
+    private lateinit var lunchCardTitle: TextView
+    private lateinit var lunchCard: ShapeableImageView
+    private lateinit var dinnerCardTitle: TextView
+    private lateinit var dinnerCard: ShapeableImageView
+    private lateinit var all: ConstraintLayout
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,54 +43,63 @@ class DailyFragment : Fragment() {
         return inflater.inflate(R.layout.daily_fragment, container, false)
     }
 
-    private val model: SelectedRecipeViewModel by activityViewModels()
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        model.breakfastIdList[tab_layout_daily.selectedTabPosition].observe(
+        model.fetchRecipeListOnce()
+        model.fetchSelectedListOnce()
+
+        model.breakfastIdList[tabLayoutDaily.selectedTabPosition].observe(
             viewLifecycleOwner,
             { recipe ->
-                breakfast_card_title.text = recipe.name
-                Log.i("OnLiveDataChanged", "done")
+                breakfastCardTitle.text = recipe.name
+            }
+        )
+
+        model.lunchIdList[tabLayoutDaily.selectedTabPosition].observe(
+            viewLifecycleOwner,
+            { recipe ->
+                lunchCardTitle.text = recipe.name
+            }
+        )
+
+        model.dinnerIdList[tabLayoutDaily.selectedTabPosition].observe(
+            viewLifecycleOwner,
+            { recipe ->
+                dinnerCardTitle.text = recipe.name
             }
         )
 
         model.tabPosition.observe(
             viewLifecycleOwner,
             { tabPosition ->
-                breakfast_card_title.text = model.breakfastIdList[tabPosition].value?.name ?: "Breakfast"
+                breakfastCardTitle.text =
+                    model.breakfastIdList[tabPosition].value?.name ?: getString(R.string.breakfast)
+                lunchCardTitle.text =
+                    model.lunchIdList[tabPosition].value?.name ?: getString(R.string.lunch)
+                dinnerCardTitle.text =
+                    model.dinnerIdList[tabPosition].value?.name ?: getString(R.string.dinner)
             }
         )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        tabLayoutDaily = view.findViewById(R.id.tab_layout_daily)
+        breakfastCardTitle = view.findViewById(R.id.breakfast_card_title)
+        lunchCardTitle = view.findViewById(R.id.lunch_card_title)
+        dinnerCardTitle = view.findViewById(R.id.dinner_card_title)
 
+        breakfastCard = view.findViewById(R.id.breakfast_card)
+        lunchCard = view.findViewById(R.id.lunch_card)
+        dinnerCard = view.findViewById(R.id.dinner_card)
+        all = view.findViewById(R.id.all)
 
         for (i in 0..6) {
-//            val tab = tab_layout_daily.newTab()
-//            tab.customView = layoutInflater.inflate(R.layout.item_tab, tab_layout_daily, false)
-//            val date = getDate(i)
-            tab_layout_daily.addTab(tab_layout_daily.newTab().setText(getDate(i).toString()).setTag(getDate(i)))
+            tabLayoutDaily.addTab(
+                tabLayoutDaily.newTab().setText(getDate(i).toString()).setTag(getDate(i))
+            )
         }
-
-//        tab_layout_daily.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-//            override fun onTabSelected(tab: TabLayout.Tab?) {
-//                tab?.text = "selected"
-//            }
-//
-//            override fun onTabUnselected(tab: TabLayout.Tab?) {
-////                tab?.text = "Unselected"
-////                TODO("Not yet implemented")
-//            }
-//
-//            override fun onTabReselected(tab: TabLayout.Tab?) {
-////                tab?.text = "WasSelected"
-////                TODO("Not yet implemented")
-//            }
-//
-//        })
 
         if (savedInstanceState != null) {
             onViewStateRestored(savedInstanceState)
@@ -88,7 +111,7 @@ class DailyFragment : Fragment() {
     }
 
     //time example Sat Jan 02 20:20:26 GMT 2021
-    private fun getDate(after: Int) : DateIdentificator {
+    private fun getDate(after: Int): DateIdentificator {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_YEAR, after)
         val data = calendar.time.toString().split(" ")
@@ -96,21 +119,49 @@ class DailyFragment : Fragment() {
     }
 
     private fun setListeners() {
-        breakfast_card.setOnClickListener {
+        val inFromRight = TranslateAnimation(
+            Animation.RELATIVE_TO_PARENT, +.5f,
+            Animation.RELATIVE_TO_PARENT, 0.0f,
+            Animation.RELATIVE_TO_PARENT, 0.0f,
+            Animation.RELATIVE_TO_PARENT, 0.0f
+        )
+        inFromRight.duration = 200
+        inFromRight.interpolator = AccelerateDecelerateInterpolator()
+
+        val inFromLeft = TranslateAnimation(
+            Animation.RELATIVE_TO_PARENT, -.5f,
+            Animation.RELATIVE_TO_PARENT, 0.0f,
+            Animation.RELATIVE_TO_PARENT, 0.0f,
+            Animation.RELATIVE_TO_PARENT, 0.0f
+        )
+        inFromLeft.duration = 200
+        inFromLeft.interpolator = AccelerateDecelerateInterpolator()
+
+
+        breakfastCard.setOnClickListener {
             navigate(DailyFragmentDirections.actionDailyFragmentToBreakfastListFragment())
         }
 
-        lunch_card.setOnClickListener {
+        lunchCard.setOnClickListener {
             navigate(DailyFragmentDirections.actionDailyFragmentToLunchListFragment())
         }
 
-        dinner_card.setOnClickListener {
+        dinnerCard.setOnClickListener {
             navigate(DailyFragmentDirections.actionDailyFragmentToDinnerListFragment())
         }
 
-        tab_layout_daily.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                model.tabPosition.value = tab!!.position
+        tabLayoutDaily.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+
+                model.tabPosition.value = tab.position
+
+                if (tab.position > previousPosition) {
+                    all.startAnimation(inFromRight)
+                } else {
+                    all.startAnimation(inFromLeft)
+                }
+
+                previousPosition = tab.position
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -127,13 +178,13 @@ class DailyFragment : Fragment() {
         view.doOnPreDraw { startPostponedEnterTransition() }
         exitTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z,
-            /* forward= */ true
+            true
         ).apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
         reenterTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z,
-            /* forward= */ false
+            false
         ).apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
@@ -141,6 +192,6 @@ class DailyFragment : Fragment() {
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        model.tabPosition.value?.let { tab_layout_daily.getTabAt(it)?.select() }
+        model.tabPosition.value?.let { tabLayoutDaily.getTabAt(it)?.select() }
     }
 }

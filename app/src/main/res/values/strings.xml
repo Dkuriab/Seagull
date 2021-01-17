@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Seagull</string>
+    <string name="app_name">Singular</string>
     <string name="daily">Daily</string>
     <string name="you">You</string>
     <string name="settings">settings</string>
@@ -14,17 +14,6 @@
     <string name="breakfast_transition_name">breakfast_tr</string>
     <string name="recipe_name_transition_name">recipe_name_transition_name</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="username_demo">UserName</string>
-    <string name="favorites">Favorites</string>
-    <string name="current">Current</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>

@@ -51,13 +51,9 @@ abstract class AbstractListFragment : Fragment() {
     }
 
     protected fun onRecipeClicked(
-        position: Int,
-        recyclerView: RecyclerView,
         directions: NavDirections,
         cardView: View,
-        PhotoDestinationTransitionName: String,
         DestinationTransitionName: String,
-        NameDestinationTransitionName: String
     ) {
         val extras = FragmentNavigatorExtras(
             cardView to DestinationTransitionName

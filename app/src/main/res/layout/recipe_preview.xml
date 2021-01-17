@@ -10,7 +10,6 @@
     app:cardElevation="3dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -34,14 +33,14 @@
         android:id="@+id/selected_point"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80000000"
+        android:background="#A9000000"
         android:visibility="invisible">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/small_seagull"
+            android:src="@drawable/genuine_fern"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Singular</string>
+    <string name="daily">Daily</string>
+    <string name="you">You</string>
+    <string name="settings">Настройки</string>
+    <string name="breakfast">Завтрак</string>
+    <string name="dinner">Ужин</string>
+    <string name="lunch">Обед</string>
+    <string name="todo">TODO</string>
+    <string name="name">Name</string>
+    <string name="todo_design">We should create design for this … now looks weird : (</string>
+    <string name="recipe_transition_name">recipe_transition</string>
+    <string name="recipe_photo_transition_name">recipe_photo_transition</string>
+    <string name="breakfast_transition_name">breakfast_tr</string>
+    <string name="recipe_name_transition_name">recipe_name_transition_name</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="register">Register</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+</resources>

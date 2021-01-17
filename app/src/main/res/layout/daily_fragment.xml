@@ -11,97 +11,101 @@
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
         app:cardCornerRadius="10sp"
-        app:layout_constraintBottom_toTopOf="@id/breakfast_card"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout_daily"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bottom_navigation_background"
-            app:tabIndicatorHeight="0dp"
-            app:tabTextColor="@color/black"
-            app:tabBackground="@drawable/daily_calendar_tab_selector"
+            android:layout_height="50sp"
             app:tabGravity="fill"
+            app:tabIndicator="@drawable/tab_indicator"
+            app:tabIndicatorGravity="center"
+            app:tabMaxWidth="80sp"
+            app:tabMinWidth="80sp"
             app:tabMode="scrollable"
             app:tabPadding="17sp"
-            app:tabSelectedTextColor="@color/white" />
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/black" />
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/breakfast_card"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/all"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="10sp"
-        android:elevation="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/google_breakfast"
-        android:transitionName="@string/breakfast_transition_name"
-        app:layout_constraintBottom_toTopOf="@id/lunch_card"
-        app:layout_constraintTop_toBottomOf="@id/tab_background"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10" />
-
-    <TextView
-        android:id="@+id/breakfast_card_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:elevation="4dp"
-        android:text="@string/breakfast"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/breakfast_card"
-        app:layout_constraintTop_toTopOf="@id/breakfast_card" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/lunch_card"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="10sp"
-        android:elevation="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/google_lunch"
-        app:layout_constraintBottom_toTopOf="@id/dinner_card"
-        app:layout_constraintTop_toBottomOf="@id/breakfast_card"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:elevation="4dp"
-        android:text="@string/lunch"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/lunch_card"
-        app:layout_constraintTop_toTopOf="@id/lunch_card" />
-
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/dinner_card"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="10sp"
-        android:elevation="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/google_dinner"
-        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lunch_card"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10" />
+        app:layout_constraintTop_toBottomOf="@id/tab_background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:elevation="4dp"
-        android:text="@string/dinner"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/dinner_card"
-        app:layout_constraintTop_toTopOf="@id/dinner_card" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/breakfast_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10sp"
+            android:elevation="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/google_breakfast"
+            android:transitionName="@string/breakfast_transition_name"
+            app:layout_constraintBottom_toTopOf="@id/lunch_card"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10" />
+
+        <TextView
+            android:id="@+id/breakfast_card_title"
+            style="@style/DailyCardsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:elevation="4dp"
+            android:text="@string/breakfast"
+            app:layout_constraintLeft_toLeftOf="@id/breakfast_card"
+            app:layout_constraintTop_toTopOf="@id/breakfast_card" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/lunch_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10sp"
+            android:elevation="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/google_lunch"
+            app:layout_constraintBottom_toTopOf="@id/dinner_card"
+            app:layout_constraintTop_toBottomOf="@id/breakfast_card"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10" />
+
+        <TextView
+            android:id="@+id/lunch_card_title"
+            style="@style/DailyCardsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:elevation="4dp"
+            android:text="@string/lunch"
+            app:layout_constraintLeft_toLeftOf="@id/lunch_card"
+            app:layout_constraintTop_toTopOf="@id/lunch_card" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/dinner_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10sp"
+            android:elevation="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/google_dinner"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lunch_card"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10" />
+
+        <TextView
+            android:id="@+id/dinner_card_title"
+            style="@style/DailyCardsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:elevation="4dp"
+            android:text="@string/dinner"
+            app:layout_constraintLeft_toLeftOf="@id/dinner_card"
+            app:layout_constraintTop_toTopOf="@id/dinner_card" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

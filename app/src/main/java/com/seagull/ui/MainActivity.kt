@@ -6,17 +6,14 @@ import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.transition.MaterialFadeThrough
 import com.seagull.R
 import com.seagull.misc.setupWithNavController
-import com.seagull.ui.login.LoginActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private var currentNavController: LiveData<NavController>? = null
 
     companion object {
-        //TODO move to Application
+        //TODO move to...
         lateinit var bottomNavigationView: BottomNavigationView
 
     }
