@@ -1,13 +1,9 @@
 package com.seagull.ui.daily
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.Animation
-import android.view.animation.TranslateAnimation
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.doOnPreDraw
@@ -18,6 +14,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
 import com.seagull.R
 import com.seagull.data.model.DateIdentificator
+import com.seagull.misc.getSlideAnimatorWithStartDelay
 import com.seagull.misc.navigate
 import com.seagull.misc.unHideBottomBar
 import java.util.*
@@ -49,38 +46,7 @@ class DailyFragment : Fragment() {
         model.fetchRecipeListOnce()
         model.fetchSelectedListOnce()
 
-        model.breakfastIdList[tabLayoutDaily.selectedTabPosition].observe(
-            viewLifecycleOwner,
-            { recipe ->
-                breakfastCardTitle.text = recipe.name
-            }
-        )
-
-        model.lunchIdList[tabLayoutDaily.selectedTabPosition].observe(
-            viewLifecycleOwner,
-            { recipe ->
-                lunchCardTitle.text = recipe.name
-            }
-        )
-
-        model.dinnerIdList[tabLayoutDaily.selectedTabPosition].observe(
-            viewLifecycleOwner,
-            { recipe ->
-                dinnerCardTitle.text = recipe.name
-            }
-        )
-
-        model.tabPosition.observe(
-            viewLifecycleOwner,
-            { tabPosition ->
-                breakfastCardTitle.text =
-                    model.breakfastIdList[tabPosition].value?.name ?: getString(R.string.breakfast)
-                lunchCardTitle.text =
-                    model.lunchIdList[tabPosition].value?.name ?: getString(R.string.lunch)
-                dinnerCardTitle.text =
-                    model.dinnerIdList[tabPosition].value?.name ?: getString(R.string.dinner)
-            }
-        )
+        setObservers()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -119,25 +85,6 @@ class DailyFragment : Fragment() {
     }
 
     private fun setListeners() {
-        val inFromRight = TranslateAnimation(
-            Animation.RELATIVE_TO_PARENT, +.5f,
-            Animation.RELATIVE_TO_PARENT, 0.0f,
-            Animation.RELATIVE_TO_PARENT, 0.0f,
-            Animation.RELATIVE_TO_PARENT, 0.0f
-        )
-        inFromRight.duration = 200
-        inFromRight.interpolator = AccelerateDecelerateInterpolator()
-
-        val inFromLeft = TranslateAnimation(
-            Animation.RELATIVE_TO_PARENT, -.5f,
-            Animation.RELATIVE_TO_PARENT, 0.0f,
-            Animation.RELATIVE_TO_PARENT, 0.0f,
-            Animation.RELATIVE_TO_PARENT, 0.0f
-        )
-        inFromLeft.duration = 200
-        inFromLeft.interpolator = AccelerateDecelerateInterpolator()
-
-
         breakfastCard.setOnClickListener {
             navigate(DailyFragmentDirections.actionDailyFragmentToBreakfastListFragment())
         }
@@ -156,9 +103,20 @@ class DailyFragment : Fragment() {
                 model.tabPosition.value = tab.position
 
                 if (tab.position > previousPosition) {
-                    all.startAnimation(inFromRight)
+//                    all.startAnimation(inFromRight)
+                    breakfastCard.startAnimation(getSlideAnimatorWithStartDelay(0.77F))
+                    breakfastCardTitle.startAnimation(getSlideAnimatorWithStartDelay(0.77F))
+                    lunchCard.startAnimation(getSlideAnimatorWithStartDelay(0.88F))
+                    lunchCardTitle.startAnimation(getSlideAnimatorWithStartDelay(0.88F))
+                    dinnerCard.startAnimation(getSlideAnimatorWithStartDelay(0.99F))
+                    dinnerCardTitle.startAnimation(getSlideAnimatorWithStartDelay(0.99F))
                 } else {
-                    all.startAnimation(inFromLeft)
+                    breakfastCard.startAnimation(getSlideAnimatorWithStartDelay(-0.77F))
+                    breakfastCardTitle.startAnimation(getSlideAnimatorWithStartDelay(-0.77F))
+                    lunchCard.startAnimation(getSlideAnimatorWithStartDelay(-0.88F))
+                    lunchCardTitle.startAnimation(getSlideAnimatorWithStartDelay(-0.88F))
+                    dinnerCard.startAnimation(getSlideAnimatorWithStartDelay(-0.99F))
+                    dinnerCardTitle.startAnimation(getSlideAnimatorWithStartDelay(-0.99F))
                 }
 
                 previousPosition = tab.position
@@ -188,6 +146,41 @@ class DailyFragment : Fragment() {
         ).apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
+    }
+
+    private fun setObservers() {
+        model.breakfastIdList[tabLayoutDaily.selectedTabPosition].observe(
+            viewLifecycleOwner,
+            { recipe ->
+                breakfastCardTitle.text = recipe.name
+            }
+        )
+
+        model.lunchIdList[tabLayoutDaily.selectedTabPosition].observe(
+            viewLifecycleOwner,
+            { recipe ->
+                lunchCardTitle.text = recipe.name
+            }
+        )
+
+        model.dinnerIdList[tabLayoutDaily.selectedTabPosition].observe(
+            viewLifecycleOwner,
+            { recipe ->
+                dinnerCardTitle.text = recipe.name
+            }
+        )
+
+        model.tabPosition.observe(
+            viewLifecycleOwner,
+            { tabPosition ->
+                breakfastCardTitle.text =
+                    model.breakfastIdList[tabPosition].value?.name ?: getString(R.string.breakfast)
+                lunchCardTitle.text =
+                    model.lunchIdList[tabPosition].value?.name ?: getString(R.string.lunch)
+                dinnerCardTitle.text =
+                    model.dinnerIdList[tabPosition].value?.name ?: getString(R.string.dinner)
+            }
+        )
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
