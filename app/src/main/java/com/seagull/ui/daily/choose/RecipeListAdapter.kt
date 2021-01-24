@@ -17,8 +17,7 @@ class RecipeListAdapter(
     private val liveDataListener: (View, Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder>() {
 
-    inner class RecipeViewHolder(val root: View) :
-        RecyclerView.ViewHolder(root) {
+    inner class RecipeViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
         private val photo = root.findViewById<ImageView>(R.id.photo)
         private val name = root.findViewById<TextView>(R.id.name)
 

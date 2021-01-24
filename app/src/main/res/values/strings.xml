@@ -24,4 +24,7 @@
     <string name="weight">Weight</string>
     <string name="height">Height</string>
     <string name="back">Back</string>
+    <string name="kilograms">kg</string>
+    <string name="grams">g</string>
+    <string name="items">pcs</string>
 </resources>

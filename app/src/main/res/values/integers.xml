@@ -3,4 +3,6 @@
     <integer name="reply_motion_duration_large">500</integer>
     <integer name="recipe_preview_max_height">280</integer>
     <integer name="recipe_preview_min_height">160</integer>
+    <integer name="anim_length">1000</integer>
+    <integer name="anim_length_half">500</integer>
 </resources>

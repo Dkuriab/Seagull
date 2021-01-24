@@ -23,4 +23,8 @@
     <string name="female">Female</string>
     <string name="weight">Weight</string>
     <string name="height">Height</string>
+    <string name="back">Back</string>
+    <string name="kilograms">кг</string>
+    <string name="grams">гр</string>
+    <string name="items">шт</string>
 </resources>

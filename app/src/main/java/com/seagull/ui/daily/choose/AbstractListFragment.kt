@@ -19,8 +19,10 @@ import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialSharedAxis
 import com.seagull.R
 import com.seagull.data.model.DateIdentificator
+import com.seagull.misc.hideBottomBar
 import com.seagull.misc.slideDown
 import com.seagull.misc.slideUp
+import com.seagull.misc.unHideBottomBar
 import com.seagull.ui.MainActivity.Companion.bottomNavigationView
 
 abstract class AbstractListFragment : Fragment() {
@@ -40,12 +42,10 @@ abstract class AbstractListFragment : Fragment() {
 
     protected val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-            if (dy > 0 && bottomNavigationView.isShown) {
-                slideDown(bottomNavigationView)
-                bottomNavigationView.menu.forEach { it.isEnabled = false }
+            if (dy > 0) {
+                hideBottomBar()
             } else if (dy < 0) {
-                slideUp(bottomNavigationView)
-                bottomNavigationView.menu.forEach { it.isEnabled = true }
+                unHideBottomBar()
             }
         }
     }
