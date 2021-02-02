@@ -1,3 +1,8 @@
 package com.seagull.data.model.buyinglist
 
-data class BuyingListItem(val name: String, val weight: Int, val measureType: MeasureType)
+data class BuyingListItem(
+    val name: String,
+    val weight: Int,
+    val measureType: MeasureType,
+    var bought: Boolean
+)

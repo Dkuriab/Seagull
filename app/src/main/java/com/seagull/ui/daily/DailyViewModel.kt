@@ -8,7 +8,7 @@ import com.seagull.data.model.MealTime
 import com.seagull.data.model.Recipe
 import com.seagull.data.source.repository.RecipeRepository
 import kotlinx.coroutines.launch
-import listBreakfast
+import com.seagull.data.model.listBreakfast
 import java.util.*
 
 class DailyViewModel : ViewModel() {

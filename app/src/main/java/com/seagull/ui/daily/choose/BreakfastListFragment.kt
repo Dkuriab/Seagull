@@ -35,7 +35,7 @@ class BreakfastListFragment : AbstractListFragment() {
                     onClick = { view: View, recipe: Recipe ->
                         onRecipeClicked(
                             BreakfastListFragmentDirections.actionBreakfastListFragmentToRecipeFragment(
-                                recipe.link,
+                                recipe.image_link_small,
                                 recipe.name
                             ),
                             view,

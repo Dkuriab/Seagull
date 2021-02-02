@@ -103,20 +103,19 @@ class DailyFragment : Fragment() {
                 model.tabPosition.value = tab.position
 
                 if (tab.position > previousPosition) {
-//                    all.startAnimation(inFromRight)
-                    breakfastCard.startAnimation(getSlideAnimatorWithStartDelay(0.77F))
-                    breakfastCardTitle.startAnimation(getSlideAnimatorWithStartDelay(0.77F))
-                    lunchCard.startAnimation(getSlideAnimatorWithStartDelay(0.88F))
-                    lunchCardTitle.startAnimation(getSlideAnimatorWithStartDelay(0.88F))
-                    dinnerCard.startAnimation(getSlideAnimatorWithStartDelay(0.99F))
-                    dinnerCardTitle.startAnimation(getSlideAnimatorWithStartDelay(0.99F))
+                    breakfastCard.startAnimation(getSlideAnimatorWithStartDelay(0.44F))
+                    breakfastCardTitle.startAnimation(getSlideAnimatorWithStartDelay(0.44F))
+                    lunchCard.startAnimation(getSlideAnimatorWithStartDelay(0.66F))
+                    lunchCardTitle.startAnimation(getSlideAnimatorWithStartDelay(0.66F))
+                    dinnerCard.startAnimation(getSlideAnimatorWithStartDelay(0.88F))
+                    dinnerCardTitle.startAnimation(getSlideAnimatorWithStartDelay(0.88F))
                 } else {
-                    breakfastCard.startAnimation(getSlideAnimatorWithStartDelay(-0.77F))
-                    breakfastCardTitle.startAnimation(getSlideAnimatorWithStartDelay(-0.77F))
-                    lunchCard.startAnimation(getSlideAnimatorWithStartDelay(-0.88F))
-                    lunchCardTitle.startAnimation(getSlideAnimatorWithStartDelay(-0.88F))
-                    dinnerCard.startAnimation(getSlideAnimatorWithStartDelay(-0.99F))
-                    dinnerCardTitle.startAnimation(getSlideAnimatorWithStartDelay(-0.99F))
+                    breakfastCard.startAnimation(getSlideAnimatorWithStartDelay(-0.44F))
+                    breakfastCardTitle.startAnimation(getSlideAnimatorWithStartDelay(-0.44F))
+                    lunchCard.startAnimation(getSlideAnimatorWithStartDelay(-0.66F))
+                    lunchCardTitle.startAnimation(getSlideAnimatorWithStartDelay(-0.66F))
+                    dinnerCard.startAnimation(getSlideAnimatorWithStartDelay(-0.88F))
+                    dinnerCardTitle.startAnimation(getSlideAnimatorWithStartDelay(-0.88F))
                 }
 
                 previousPosition = tab.position

@@ -28,7 +28,7 @@ class RecipeListAdapter(
                 name.transitionName = "${name.transitionName}${recipe.id}"
                 name.text = recipe.name
                 Picasso.get()
-                    .load(recipe.link)
+                    .load(recipe.image_link_small)
                     .placeholder(R.drawable.progress_animated)
                     .into(photo)
             }
