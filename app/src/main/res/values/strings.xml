@@ -27,4 +27,8 @@
     <string name="kilograms">kg</string>
     <string name="grams">g</string>
     <string name="items">pcs</string>
+    <string name="username">Username</string>
+    <string name="language">Language:</string>
+    <string name="example">example</string>
+    <string name="save">save</string>
 </resources>

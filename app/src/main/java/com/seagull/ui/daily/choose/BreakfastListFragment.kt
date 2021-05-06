@@ -21,7 +21,7 @@ class BreakfastListFragment : AbstractListFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val tabPosition = model.tabPosition.value ?: 0
+        val tabPosition = model.selectedDay.value ?: 0
 
         val view = super.onCreateView(inflater, container, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)

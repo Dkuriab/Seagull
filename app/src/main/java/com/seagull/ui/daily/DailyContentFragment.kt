@@ -62,6 +62,7 @@ class DailyContentFragment : Fragment() {
             parentFragment?.navigate(DailyFragmentDirections.actionDailyFragmentToBreakfastListFragment())
         }
 
+
         lunchCard.setOnClickListener {
             parentFragment?.navigate(DailyFragmentDirections.actionDailyFragmentToLunchListFragment())
         }
@@ -90,28 +91,28 @@ class DailyContentFragment : Fragment() {
     }
 
     private fun setObservers() {
-        model.breakfastIdList[model.tabPosition.value ?: 0].observe(
+        model.breakfastIdList[model.selectedDay.value ?: 0].observe(
             viewLifecycleOwner,
             { recipe ->
                 breakfastCardTitle.text = recipe.name
             }
         )
 
-        model.lunchIdList[model.tabPosition.value ?: 0].observe(
+        model.lunchIdList[model.selectedDay.value ?: 0].observe(
             viewLifecycleOwner,
             { recipe ->
                 lunchCardTitle.text = recipe.name
             }
         )
 
-        model.dinnerIdList[model.tabPosition.value ?: 0].observe(
+        model.dinnerIdList[model.selectedDay.value ?: 0].observe(
             viewLifecycleOwner,
             { recipe ->
                 dinnerCardTitle.text = recipe.name
             }
         )
 
-        model.tabPosition.observe(
+        model.selectedDay.observe(
             viewLifecycleOwner,
             { tabPosition ->
                 breakfastCardTitle.text =

@@ -5,6 +5,28 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/header"-->
+<!--        style="@style/CardViewStyle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:layout_margin="5sp"-->
+<!--            android:id="@+id/meal_time_header"-->
+<!--            style="@style/DailyCardsText"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:text="@string/todo"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content" />-->
+<!--    </com.google.android.material.card.MaterialCardView>-->
+
+<!--        android:paddingTop="50dp"-->
+<!--        android:clipToPadding="false"-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"

@@ -22,10 +22,13 @@ class LunchListFragment : AbstractListFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val tabPosition = model.tabPosition.value ?: 0
+        val selectedDay = model.selectedDay.value ?: 0
 
         val view = super.onCreateView(inflater, container, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+//        val header = view.findViewById<MaterialTextView>(R.id.meal_time_header)
+//        header.text = getString(R.string.lunch)
+
         recyclerView.addOnScrollListener(scrollListener)
 
         recyclerView.apply {
@@ -47,7 +50,7 @@ class LunchListFragment : AbstractListFragment() {
                         model.select(recipe, MealTime.Lunch)
                     },
                     liveDataListener = { view: View, recipe: Recipe ->
-                        model.lunchIdList[tabPosition].observe(viewLifecycleOwner, {
+                        model.lunchIdList[selectedDay].observe(viewLifecycleOwner, {
                             val selectedPoint =
                                 view.findViewById<ConstraintLayout>(R.id.selected_point)
                             if (recipe.id == it.id) {

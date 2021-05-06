@@ -45,8 +45,9 @@ class DailyFragment : Fragment() {
 
         for (i in 0..6) {
             tabLayoutDaily.addTab(
-                tabLayoutDaily.newTab().setText(getDate(i).toString()).setTag(getDate(i))
+                tabLayoutDaily.newTab().setText(getDate(i).toString())
             )
+//            Log.d("Added day: ", getDate(i).toString())
         }
 
         viewPager.adapter = DailyAdapter(childFragmentManager, requireContext(), tabLayoutDaily.tabCount)
@@ -59,22 +60,21 @@ class DailyFragment : Fragment() {
 
         setListeners()
         unHideBottomBar()
-        setTransition(view)
+        setVisualEffects(view)
     }
 
-    //time example Sat Jan 02 20:20:26 GMT 2021
     private fun getDate(after: Int): DateIdentificator {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_YEAR, after)
         val data = calendar.time.toString().split(" ")
-        return DateIdentificator(data[1], data[2].toInt())
+        return DateIdentificator(month = data[1], day = data[2].toInt())
     }
 
     private fun setListeners() {
         tabLayoutDaily.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 viewPager.currentItem = tab.position
-                model.tabPosition.value = tab.position
+                model.selectedDay.value = tab.position
 //                previousPosition = tab.position
             }
 
@@ -87,7 +87,7 @@ class DailyFragment : Fragment() {
 
     }
 
-    private fun setTransition(view: View) {
+    private fun setVisualEffects(view: View) {
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
         exitTransition = MaterialSharedAxis(
@@ -106,6 +106,6 @@ class DailyFragment : Fragment() {
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        model.tabPosition.value?.let { tabLayoutDaily.getTabAt(it)?.select() }
+        model.selectedDay.value?.let { tabLayoutDaily.getTabAt(it)?.select() }
     }
 }

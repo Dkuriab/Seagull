@@ -17,7 +17,7 @@ class DailyViewModel : ViewModel() {
     private var fetched = false
     private var fetchedSelected = false
 
-    val tabPosition = MutableLiveData<Int>()
+    val selectedDay = MutableLiveData<Int>()
 
     val recipes = MutableLiveData<List<Recipe>>()
 
@@ -35,7 +35,7 @@ class DailyViewModel : ViewModel() {
 
     fun select(recipe: Recipe, mealTime: MealTime) {
         viewModelScope.launch {
-            val date = getDate(tabPosition.value ?: 0)
+            val date = getDate(selectedDay.value ?: 0)
             repository.updateSelectedRecipes(
                 DBSelectedRecipe(
                     date = "$date.$mealTime",
@@ -43,9 +43,9 @@ class DailyViewModel : ViewModel() {
                 )
             )
             when (mealTime) {
-                MealTime.Breakfast -> breakfastIdList[tabPosition.value ?: 0].value = recipe
-                MealTime.Lunch -> lunchIdList[tabPosition.value ?: 0].value = recipe
-                MealTime.Dinner -> dinnerIdList[tabPosition.value ?: 0].value = recipe
+                MealTime.Breakfast -> breakfastIdList[selectedDay.value ?: 0].value = recipe
+                MealTime.Lunch -> lunchIdList[selectedDay.value ?: 0].value = recipe
+                MealTime.Dinner -> dinnerIdList[selectedDay.value ?: 0].value = recipe
             }
         }
     }
