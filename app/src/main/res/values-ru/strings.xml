@@ -27,4 +27,8 @@
     <string name="kilograms">кг</string>
     <string name="grams">гр</string>
     <string name="items">шт</string>
+    <string name="username">Имя пользователя</string>
+    <string name="language">Язык</string>
+    <string name="example">пример</string>
+    <string name="save">сохранить</string>
 </resources>

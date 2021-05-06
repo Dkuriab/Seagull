@@ -19,9 +19,9 @@ class SettingsFragment : Fragment() {
         return inflater.inflate(R.layout.settings_fragment, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val intent = Intent(appContext, LoginActivity::class.java)
-        startActivity(intent)
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        val intent = Intent(appContext, LoginActivity::class.java)
+//        startActivity(intent)
+//    }
 }
